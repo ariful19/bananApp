@@ -352,8 +352,8 @@ async function generateSpeechWithGemini(text, apiKey) {
       }
     }
   };
-
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:streamGenerateContent?key=AIzaSyCdSvk9pMC4Gv6tdfNPEfFLNwNbzcL-PgA`;
+  // Use user-provided API key from settings (passed in) rather than any hardcoded value
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:streamGenerateContent?key=${encodeURIComponent(apiKey)}`;
   const res = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(body) });
   if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
 
