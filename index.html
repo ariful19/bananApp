@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="bn">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>রঙিন বানান শেখা</title>
+    <meta name="description" content="শিশুদের জন্য বাংলা বানান শেখার অ্যাপ — টাইপ করুন, ছবি দেখুন!" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <h1>রঙিন বানান শেখা</h1>
+      <div class="header-actions">
+        <button id="open-settings" class="btn ghost" aria-label="সেটিংস">⚙️</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="panel input-panel glass">
+        <label for="word" class="label">এখানে শব্দ গঠন করুন</label>
+        <div class="type-row">
+          <input id="word" class="word-input" placeholder="যেমন: আম, কাক, বই" autocomplete="off" />
+          <button id="go" class="btn primary">চলো</button>
+          <button id="speak" class="btn" aria-label="শুনুন">🔊 শুনুন</button>
+        </div>
+        <div id="keyboard" class="keyboard"></div>
+        <div class="tips">ইঙ্গিত: স্বরচিহ্ন (া, ি, ী...) যোগ করতে ব্যঞ্জনের পরে চাপুন।</div>
+      </section>
+
+      <section class="panel output-panel glass">
+        <div class="preview-wrap">
+          <div id="status" class="status">এখানে ছবি প্রদর্শিত হবে</div>
+          <img id="result-image" alt="AI ছবি" class="result-image" tabindex="0" />
+        </div>
+      </section>
+    </main>
+
+    <dialog id="image-dialog" class="image-dialog">
+      <div class="frame">
+        <form method="dialog">
+          <button class="btn ghost close-btn" aria-label="বন্ধ">✕</button>
+        </form>
+        <img id="full-image" alt="পুরো ছবি" />
+      </div>
+    </dialog>
+
+    <dialog id="settings-dialog" class="settings">
+      <form method="dialog">
+        <h2>সেটিংস</h2>
+        <div class="grid">
+          <label>মূল রং
+            <input id="color-primary" type="color" />
+          </label>
+          <label>ব্যাকগ্রাউন্ড
+            <input id="color-bg" type="color" />
+          </label>
+          <label>গ্লাস উজ্জ্বলতা
+            <input id="glass-blur" type="range" min="0" max="20" step="1" />
+          </label>
+          <label>Gemini API Key
+            <input id="api-key" type="password" placeholder="AIza..." />
+          </label>
+        </div>
+        <menu>
+          <button id="clear-key" class="btn ghost" type="button">কী মুছুন</button>
+          <button class="btn" value="cancel">বাতিল</button>
+          <button id="save-settings" class="btn primary" value="default">সংরক্ষণ</button>
+        </menu>
+        <p class="fine-print">কী শুধুমাত্র এই ব্রাউজারে সংরক্ষিত হবে (localStorage)।</p>
+      </form>
+    </dialog>
+
+    <footer class="app-footer">
+      <small>AI: Google Gemini image generation • ডেমো উদ্দেশ্যে</small>
+    </footer>
+
+    <script src="app.js" type="module"></script>
+  </body>
+  </html>
